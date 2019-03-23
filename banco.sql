@@ -27,17 +27,20 @@ CREATE TABLE transacciones (
    FOREIGN KEY (cuenta_id) REFERENCES cuentas (cuenta_id) ON DELETE CASCADE
 );
 
-INSERT INTO faculty (faculty_id, faculty_name, office) 
+INSERT INTO cliente (cliente_id, nombre_cliente) 
 VALUES
-('001A', 'Rodrigo', 'N-201'), 
-('002A', 'Fausto', 'Hayek-301'), 
-('003A', 'Noel', 'Hayek-302');
+('1716181654', 'Rodrigo Arroyo'), 
+('1716181655', 'Aaron Salazar');
 
-INSERT INTO course (course_id, faculty_id, course) 
+INSERT INTO cuentas (cuenta_id, cliente_id, saldo) 
 VALUES
-('CMP-100', '001A', 'Programacion I'), 
-('CMP-200', '002A', 'Programacion III'), 
-('CMP-500', '003A', 'Base de Datos');
+('0001', '1716181654', '2000'), 
+('0002', '1716181655', '150');
+
+INSERT INTO transacciones (transaccion_id, cuenta_id, tipo, valor, fecha) 
+VALUES
+('0001', '0001', 'Deposito', 10, 2019-03-23), 
+('0002', '0002', 'Deposito', 100, 2019-03-22);
 
  
 
