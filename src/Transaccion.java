@@ -6,6 +6,11 @@ public class Transaccion
     private String valor;
     private String fecha;
 
+    public Transaccion()
+    {
+
+    }
+
     public Transaccion (String IdCliente, String Tipo, String Valor, String Fecha)
     {
         idCliente = IdCliente;
