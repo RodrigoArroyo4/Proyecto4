@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Mar 23 16:23:02 ECT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0169-ac6f-7df0-000007069ed0 
+on database directory /Users/Rodrigoarroyo/Documents/USFQ/2018-2019/SegundoSemestre/ProgramacionIII/Proyecto4/BancoAA with class loader sun.misc.Launcher$AppClassLoader@6f94fa3e 
+Loaded from file:/Users/Rodrigoarroyo/opt/Apache/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_151-b12
+user.dir=/Users/Rodrigoarroyo/Documents/USFQ/2018-2019/SegundoSemestre/ProgramacionIII/Proyecto4
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.13.6
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
