@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.*;
 import java.net.*;
+import java.util.Date;
 
 public class Main extends Application
 {
@@ -35,6 +36,8 @@ public class Main extends Application
                 ServerSocket serverSocket = new ServerSocket(8080);
 
                 //Maybe add info to pop up in terminal that server has been created
+                System.out.println("Server Started: at " + new Date() + "\n");
+
                 //runLater commands can be avoided unless required for th GUI
 
                 //loop to maintain server up and running
@@ -47,6 +50,10 @@ public class Main extends Application
                     clients++;
 
                     //maybe terminal command to show a new connection was made
+
+                    System.out.println("Starting thread for client " + clients +
+                            " at " + new Date() + '\n');
+
 
                     //main thread handler
                     new Thread(new HandleAclient(socket)).start();
