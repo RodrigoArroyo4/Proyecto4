@@ -1,9 +1,5 @@
-DROP SCHEMA root;
-
-CREATE SCHEMA root;
-
-DROP TABLE cuentas;
 DROP TABLE cliente;
+DROP TABLE cuentas;
 DROP TABLE transacciones;
 
 CREATE TABLE cliente (

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="derby">
+    <CLASSES>
+      <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/db/lib/derbyclient.jar!/" />
+      <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/db/lib/derbynet.jar!/" />
+      <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/db/lib/derbyoptionaltools.jar!/" />
+      <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/db/lib/derbyrun.jar!/" />
+      <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/db/lib/derby.jar!/" />
+      <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/db/lib/derbytools.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
