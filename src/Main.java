@@ -11,6 +11,11 @@ import java.util.Date;
 
 public class Main extends Application
 {
+
+    private static final String URL = "jdbc:derby:Banco";
+    private static final String USERNAME = "rodrigo";
+    private static final String PASSWORD = "root";
+
     private int clients = 0;
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -110,15 +115,16 @@ public class Main extends Application
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         final String DATABASE_URL = "jdbc:derby:BancoAA";
         final String SELECT_QUERY =
-                "SELECT * from Transacciones";
+                "SELECT * from cliente";
 
         try(
                 Connection connection = DriverManager.getConnection(
-                        "jdbc:derby:BancoAA", "root", "root");
+                        URL, USERNAME, PASSWORD);
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(SELECT_QUERY))
         {

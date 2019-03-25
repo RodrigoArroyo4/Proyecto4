@@ -1,88 +1,13 @@
 ----------------------------------------------------------------
-Sun Mar 24 21:15:45 ECT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0169-b2a1-d934-000007023608 
-on database directory /Users/AS/Documents/gitProject/Proyecto4/BancoAA with class loader sun.misc.Launcher$AppClassLoader@511d50c0 
-Loaded from file:/Users/AS/opt/Apache/db-derby-10.14.2.0-bin/lib/derby.jar
+Mon Mar 25 11:10:10 ECT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0169-b59d-c5c3-00000614fe98 
+on database directory /Users/Rodrigoarroyo/Documents/USFQ/2018-2019/SegundoSemestre/ProgramacionIII/Proyecto4/Banco with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/Users/Rodrigoarroyo/opt/Apache/db-derby-10.14.2.0-bin/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_65-b17
-user.dir=/Users/AS/Documents/gitProject/Proyecto4
+java.runtime.version=1.8.0_151-b12
+user.dir=/Users/Rodrigoarroyo/Documents/USFQ/2018-2019/SegundoSemestre/ProgramacionIII/Proyecto4
 os.name=Mac OS X
 os.arch=x86_64
-os.version=10.14.3
+os.version=10.13.6
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
-Sun Mar 24 21:17:26 ECT 2019 Thread[main,5,main] (XID = 449), (SESSIONID = 1), (DATABASE = BancoAA), (DRDAID = null), Cleanup action starting
-Sun Mar 24 21:17:26 ECT 2019 Thread[main,5,main] (XID = 449), (SESSIONID = 1), (DATABASE = BancoAA), (DRDAID = null), Failed Statement is: DROP TABLE cuentas
-java.lang.NullPointerException
-	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getConstraintDescriptorViaIndex(Unknown Source)
-	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getConstraintDescriptorsScan(Unknown Source)
-	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getConstraintDescriptors(Unknown Source)
-	at org.apache.derby.impl.sql.execute.DropTableConstantAction.dropAllConstraintDescriptors(Unknown Source)
-	at org.apache.derby.impl.sql.execute.DropTableConstantAction.executeConstantAction(Unknown Source)
-	at org.apache.derby.impl.sql.execute.MiscResultSet.open(Unknown Source)
-	at org.apache.derby.impl.sql.GenericPreparedStatement.executeStmt(Unknown Source)
-	at org.apache.derby.impl.sql.GenericPreparedStatement.execute(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedStatement.executeStatement(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
-	at org.apache.derby.impl.tools.ij.ij.executeImmediate(Unknown Source)
-	at org.apache.derby.impl.tools.ij.utilMain.doCatch(Unknown Source)
-	at org.apache.derby.impl.tools.ij.utilMain.runScriptGuts(Unknown Source)
-	at org.apache.derby.impl.tools.ij.utilMain.go(Unknown Source)
-	at org.apache.derby.impl.tools.ij.Main.go(Unknown Source)
-	at org.apache.derby.impl.tools.ij.Main.mainCore(Unknown Source)
-	at org.apache.derby.impl.tools.ij.Main.main(Unknown Source)
-	at org.apache.derby.tools.ij.main(Unknown Source)
-Cleanup action completed
-Sun Mar 24 21:18:33 ECT 2019 Thread[main,5,main] (XID = 455), (SESSIONID = 3), (DATABASE = BancoAA), (DRDAID = null), Cleanup action starting
-Sun Mar 24 21:18:33 ECT 2019 Thread[main,5,main] (XID = 455), (SESSIONID = 3), (DATABASE = BancoAA), (DRDAID = null), Failed Statement is: DROP TABLE cuentas
-java.lang.NullPointerException
-	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getConstraintDescriptorViaIndex(Unknown Source)
-	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getConstraintDescriptorsScan(Unknown Source)
-	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getConstraintDescriptors(Unknown Source)
-	at org.apache.derby.impl.sql.execute.DropTableConstantAction.dropAllConstraintDescriptors(Unknown Source)
-	at org.apache.derby.impl.sql.execute.DropTableConstantAction.executeConstantAction(Unknown Source)
-	at org.apache.derby.impl.sql.execute.MiscResultSet.open(Unknown Source)
-	at org.apache.derby.impl.sql.GenericPreparedStatement.executeStmt(Unknown Source)
-	at org.apache.derby.impl.sql.GenericPreparedStatement.execute(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedStatement.executeStatement(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
-	at org.apache.derby.impl.tools.ij.ij.executeImmediate(Unknown Source)
-	at org.apache.derby.impl.tools.ij.utilMain.doCatch(Unknown Source)
-	at org.apache.derby.impl.tools.ij.utilMain.runScriptGuts(Unknown Source)
-	at org.apache.derby.impl.tools.ij.utilMain.go(Unknown Source)
-	at org.apache.derby.impl.tools.ij.Main.go(Unknown Source)
-	at org.apache.derby.impl.tools.ij.Main.mainCore(Unknown Source)
-	at org.apache.derby.impl.tools.ij.Main.main(Unknown Source)
-	at org.apache.derby.tools.ij.main(Unknown Source)
-Cleanup action completed
-Sun Mar 24 21:20:36 ECT 2019 Thread[main,5,main] (XID = 464), (SESSIONID = 5), (DATABASE = BancoAA), (DRDAID = null), Cleanup action starting
-Sun Mar 24 21:20:36 ECT 2019 Thread[main,5,main] (XID = 464), (SESSIONID = 5), (DATABASE = BancoAA), (DRDAID = null), Failed Statement is: DROP TABLE cuentas
-java.lang.NullPointerException
-	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getConstraintDescriptorViaIndex(Unknown Source)
-	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getConstraintDescriptorsScan(Unknown Source)
-	at org.apache.derby.impl.sql.catalog.DataDictionaryImpl.getConstraintDescriptors(Unknown Source)
-	at org.apache.derby.impl.sql.execute.DropTableConstantAction.dropAllConstraintDescriptors(Unknown Source)
-	at org.apache.derby.impl.sql.execute.DropTableConstantAction.executeConstantAction(Unknown Source)
-	at org.apache.derby.impl.sql.execute.MiscResultSet.open(Unknown Source)
-	at org.apache.derby.impl.sql.GenericPreparedStatement.executeStmt(Unknown Source)
-	at org.apache.derby.impl.sql.GenericPreparedStatement.execute(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedStatement.executeStatement(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
-	at org.apache.derby.impl.tools.ij.ij.executeImmediate(Unknown Source)
-	at org.apache.derby.impl.tools.ij.utilMain.doCatch(Unknown Source)
-	at org.apache.derby.impl.tools.ij.utilMain.runScriptGuts(Unknown Source)
-	at org.apache.derby.impl.tools.ij.utilMain.go(Unknown Source)
-	at org.apache.derby.impl.tools.ij.Main.go(Unknown Source)
-	at org.apache.derby.impl.tools.ij.Main.mainCore(Unknown Source)
-	at org.apache.derby.impl.tools.ij.Main.main(Unknown Source)
-	at org.apache.derby.tools.ij.main(Unknown Source)
-Cleanup action completed
-----------------------------------------------------------------
-Sun Mar 24 21:23:21 ECT 2019: Shutting down Derby engine
-----------------------------------------------------------------
-Sun Mar 24 21:23:21 ECT 2019:
-Shutting down instance a816c00e-0169-b2a1-d934-000007023608 on database directory /Users/AS/Documents/gitProject/Proyecto4/BancoAA with class loader sun.misc.Launcher$AppClassLoader@511d50c0 
-----------------------------------------------------------------
