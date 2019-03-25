@@ -118,7 +118,7 @@ public class Main extends Application
     public static void main(String[] args)
     {
 
-        final String DATABASE_URL = "jdbc:derby:BancoAA";
+        final String DATABASE_URL = "jdbc:derby:Banco";
         final String SELECT_QUERY =
                 "SELECT * from cliente";
 
