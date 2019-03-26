@@ -13,6 +13,9 @@ public class ControllerCliente {
     private Button TransactionButton;
     @FXML
     private TextField Cedula;
+    @FXML
+    private TextField SaldoText;
+
 
     private String host = "localhost";
     private DataInputStream fromServer;
@@ -29,6 +32,7 @@ public class ControllerCliente {
         isConnected = true;
         ConnectButton.setDisable(true);
         Cedula.setDisable(true);
+        String clienteID = Cedula.getText();
 
 
         try
@@ -51,7 +55,9 @@ public class ControllerCliente {
         {
             try
             {
-                toServer.writeInt(10);
+                toServer.writeUTF(clienteID);
+                double saldoInicial = fromServer.readDouble();
+                SaldoText.setText(Double.toString(saldoInicial));
             }
             catch (Exception ex)
             {
@@ -67,12 +73,5 @@ public class ControllerCliente {
         toServer.writeInt(200);
 
     }
-
-
-
-
-
-
-
 
 }

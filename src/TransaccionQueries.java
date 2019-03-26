@@ -12,6 +12,7 @@ public class TransaccionQueries
 
     private Connection connection;
     private PreparedStatement selectTransaccion;
+    private PreparedStatement get;
 
     public TransaccionQueries()
     {

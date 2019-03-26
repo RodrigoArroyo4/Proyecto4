@@ -10,6 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -128,6 +129,14 @@ public class Controller implements Initializable
 
     }
 
+
+
+    //handling methods for transactions
+
+
+
+
+
     class HandleAclient implements Runnable{
         private Socket socket;
 
@@ -147,20 +156,23 @@ public class Controller implements Initializable
                 //servicing the client
                 while(true)
                 {
+                    //Connection Init
+                    String clientID = inputFromClient.readUTF();
+                    conexiones.appendText("Cliente: " + clients + " with ID: " + clientID + "\n");
+                    //Send saldo in saldo textArea when client connects to client
+                    List<Double> saldoInicial = cq.getSaldoOfCuenta(Integer.parseInt(clientID));
+                    outputToClient.writeDouble(saldoInicial.get(0));
+
+
                     //run the query that is desired here weather its Withdraw... etc. with inputFromClient
 
 
                     //send confirmation of succesful/unsuccesful transaction, using outputToClient
 
-                    int mensaje = inputFromClient.readInt();
-                    System.out.println(mensaje);
 
                     //show results in GUI with Platform.runLater()...
 
-
                 }
-
-
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -171,6 +183,10 @@ public class Controller implements Initializable
 
     }
 
-}
+
+
+
+
+}//end of file
 
 
