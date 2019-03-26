@@ -2,8 +2,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -11,12 +17,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Controller implements Initializable
 {
+
+    //Global socket variable holders
+    private int clients = 0;
+
     //Class initializers for queries
     ClienteQueries clq = new ClienteQueries();
     CuentaQueries cq = new CuentaQueries();
     TransaccionQueries tq = new TransaccionQueries();
 
     public Controller(){}
+    //Conections textArea
+    @FXML
+    private TextArea conexiones;
+
     //Tables
     @FXML
     private TableView<Cliente> clienteTable;
@@ -52,6 +66,44 @@ public class Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb){
 
+        //socket Initializer
+        new Thread( ()-> {
+            try {
+                //Start Server with desired port on the socket
+                ServerSocket serverSocket = new ServerSocket(8080);
+
+                //Maybe add info to pop up in terminal that server has been created
+                System.out.println("Server Started: at " + new Date() + "\n");
+
+                //runLater commands can be avoided unless required for th GUI
+
+                //loop to maintain server up and running
+
+                while (true) {
+                    //accept a new socket connection
+                    Socket socket = serverSocket.accept();
+
+                    //count Clients
+                    clients++;
+
+                    //maybe terminal command to show a new connection was made
+
+                    System.out.println("Starting thread for client " + clients +
+                            " at " + new Date() + '\n');
+
+
+                    //main thread handler
+                    new Thread(new Controller.HandleAclient(socket)).start();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+
+
+
+
         //populate Clientes Table
         cliente_id_column.setCellValueFactory(new PropertyValueFactory<Cliente,Integer>("cliente_id"));
         nombre_cliente_column.setCellValueFactory(new PropertyValueFactory<Cliente,Integer>("nombre_cliente"));
@@ -74,4 +126,49 @@ public class Controller implements Initializable
 
     }
 
+    class HandleAclient implements Runnable{
+        private Socket socket;
+
+        public HandleAclient(Socket socket){
+            this.socket = socket;
+        }
+
+        //thread to be run
+        public void run(){
+            try {
+                //input/output handler might have to change to objectInput...
+                DataInputStream inputFromClient = new DataInputStream(
+                        socket.getInputStream());
+                DataOutputStream outputToClient = new DataOutputStream(
+                        socket.getOutputStream());
+
+                //servicing the client
+                while(true)
+                {
+                    //run the query that is desired here weather its Withdraw... etc. with inputFromClient
+
+
+                    //send confirmation of succesful/unsuccesful transaction, using outputToClient
+
+                    int mensaje = inputFromClient.readInt();
+                    System.out.println(mensaje);
+
+                    //show results in GUI with Platform.runLater()...
+
+
+                }
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+    }
+
 }
+
+

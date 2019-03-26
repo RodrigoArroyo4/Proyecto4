@@ -39,6 +39,7 @@ public class TransaccionQueries
             {
                 results.add(new Transaccion(
                         resultSet.getInt("transaccion_id"),
+
                         resultSet.getInt("cuenta_id"),
                         resultSet.getString("tipo"),
                         resultSet.getBigDecimal("valor"),

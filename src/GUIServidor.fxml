@@ -26,7 +26,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextArea layoutX="74.0" layoutY="91.0" prefHeight="100.0" prefWidth="615.0" />
+            <TextArea fx:id="conexiones" editable="false" layoutX="74.0" layoutY="91.0" prefHeight="100.0" prefWidth="615.0" />
             <Label layoutX="332.0" layoutY="61.0" text="Conexiones">
                <font>
                   <Font size="18.0" />
