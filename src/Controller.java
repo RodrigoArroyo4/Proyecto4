@@ -87,9 +87,11 @@ public class Controller implements Initializable
                     clients++;
 
                     //maybe terminal command to show a new connection was made
-
-                    System.out.println("Starting thread for client " + clients +
+                    conexiones.appendText("Starting thread for client " + clients +
                             " at " + new Date() + '\n');
+
+                    //System.out.println("Starting thread for client " + clients +
+                     //       " at " + new Date() + '\n');
 
 
                     //main thread handler
