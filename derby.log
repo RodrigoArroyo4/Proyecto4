@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Mon Mar 25 18:17:33 ECT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0169-b725-0f0b-000007069de0 
-on database directory /Users/Rodrigoarroyo/Documents/USFQ/2018-2019/SegundoSemestre/ProgramacionIII/Proyecto4/Banco with class loader sun.misc.Launcher$AppClassLoader@6f94fa3e 
+Mon Mar 25 21:26:39 ECT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0169-b7d2-2871-00000614fba8 
+on database directory /Users/Rodrigoarroyo/Documents/USFQ/2018-2019/SegundoSemestre/ProgramacionIII/Proyecto4/Banco with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/Users/Rodrigoarroyo/opt/Apache/db-derby-10.14.2.0-bin/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_151-b12

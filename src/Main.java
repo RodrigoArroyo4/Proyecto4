@@ -89,14 +89,15 @@ public class Main extends Application
                         socket.getOutputStream());
 
                 //servicing the client
-                while(true){
+                while(true)
+                {
                     //run the query that is desired here weather its Withdraw... etc. with inputFromClient
 
 
                     //send confirmation of succesful/unsuccesful transaction, using outputToClient
 
-
-
+                    int mensaje = inputFromClient.readInt();
+                    System.out.println(mensaje);
 
                     //show results in GUI with Platform.runLater()...
 
