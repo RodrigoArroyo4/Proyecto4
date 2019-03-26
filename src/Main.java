@@ -121,7 +121,7 @@ public class Main extends Application
 
         final String DATABASE_URL = "jdbc:derby:Banco";
         final String SELECT_QUERY =
-                "SELECT * from cliente";
+                "SELECT * from Transacciones";
 
         try(
                 Connection connection = DriverManager.getConnection(
