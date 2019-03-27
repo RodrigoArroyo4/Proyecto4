@@ -1,8 +1,9 @@
 import org.apache.derby.client.am.Decimal;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Transaccion
+public class Transaccion implements Serializable
 {
     public Integer getTransaccion_id() {
         return transaccion_id;

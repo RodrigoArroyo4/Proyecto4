@@ -15,13 +15,13 @@
             <Button fx:id="ConnectButton" layoutX="505.0" layoutY="30.0" mnemonicParsing="false" onAction="#connectToServer" text="Connect" />
             <Button fx:id="TransactionButton" layoutX="482.0" layoutY="419.0" mnemonicParsing="false" onAction="#withdrawFunds" text="Transaccion" />
             <Label layoutX="27.0" layoutY="35.0" prefHeight="17.0" prefWidth="70.0" text="ID Cliente" />
-            <TableView layoutX="97.0" layoutY="141.0" prefHeight="200.0" prefWidth="423.0">
+            <TableView fx:id="transaccionTableView" layoutX="97.0" layoutY="141.0" prefHeight="200.0" prefWidth="423.0">
               <columns>
-                <TableColumn prefWidth="110.0" text="ID Transaccion" />
-                <TableColumn prefWidth="75.0" text="ID Cuenta" />
-                  <TableColumn prefWidth="74.0" text="Tipo" />
-                  <TableColumn prefWidth="72.0" text="Valor" />
-                  <TableColumn prefWidth="91.0" text="Fecha" />
+                <TableColumn fx:id="transaccion_id_column" prefWidth="110.0" text="ID Transaccion" />
+                <TableColumn fx:id="transaccion_cuenta_id_column" prefWidth="75.0" text="ID Cuenta" />
+                  <TableColumn fx:id="transaccion_tipo_column" prefWidth="74.0" text="Tipo" />
+                  <TableColumn fx:id="transaccion_valor_column" prefWidth="72.0" text="Valor" />
+                  <TableColumn fx:id="transaccion_fecha_column" prefWidth="91.0" text="Fecha" />
               </columns>
             </TableView>
             <TextField fx:id="Cedula" layoutX="97.0" layoutY="30.0" />

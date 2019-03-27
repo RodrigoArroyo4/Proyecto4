@@ -1,5 +1,8 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.swing.text.TabableView;
 import java.io.DataInputStream;
@@ -80,6 +83,7 @@ public class ControllerCliente {
                 double saldoInicial = fromServer.readDouble();
                 SaldoText.setText(Double.toString(saldoInicial));
                 List<Transaccion> currTransacciones = (List<Transaccion>) fromServerObject.readObject();
+                populateTransaccionTable(currTransacciones);
 
 
 
@@ -102,7 +106,14 @@ public class ControllerCliente {
     }
 
     public void populateTransaccionTable(List<Transaccion> currTransacciones){
-
+        //Populate Transacciones Table
+        ObservableList<Transaccion> cTransaccion = FXCollections.observableArrayList(currTransacciones);
+        transaccion_id_column.setCellValueFactory(new PropertyValueFactory<Transaccion,Integer>("transaccion_id"));
+        transaccion_cuenta_id_column.setCellValueFactory(new PropertyValueFactory<Transaccion,Integer>("cuenta_id"));
+        transaccion_tipo_column.setCellValueFactory(new PropertyValueFactory<Transaccion,String>("tipo"));
+        transaccion_valor_column.setCellValueFactory(new PropertyValueFactory<Transaccion,BigDecimal>("valor"));
+        transaccion_fecha_column.setCellValueFactory(new PropertyValueFactory<Transaccion,String>("fecha"));
+        transaccionTableView.setItems(cTransaccion);
     }
 
 }

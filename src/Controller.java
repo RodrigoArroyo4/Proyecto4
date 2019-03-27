@@ -165,6 +165,8 @@ public class Controller implements Initializable
                     //Send saldo in saldo textArea when client connects to client
                     List<Double> saldoInicial = cq.getSaldoOfCuenta(Integer.parseInt(clientID));
                     outputToClient.writeDouble(saldoInicial.get(0));
+
+                    //Transacciones
                     List<Transaccion> currTransaciones = tq.getTransaccionesfromCuenta(Integer.parseInt(clientID));
                     objectOutputToClient.writeObject(currTransaciones);
 

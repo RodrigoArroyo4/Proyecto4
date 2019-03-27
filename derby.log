@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue Mar 26 19:06:22 ECT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0169-bc78-1f27-000005f642d0 
+Tue Mar 26 19:26:42 ECT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0169-bc8a-b9d1-000005f5e758 
 on database directory /Users/aaronsalazar/Desktop/CSProject/Proyecto4/Banco with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/db/lib/derby.jar
 java.vendor=Oracle Corporation
