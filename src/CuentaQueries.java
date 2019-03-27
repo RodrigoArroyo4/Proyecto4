@@ -1,7 +1,8 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.apache.derby.client.am.Decimal;
+//import org.apache.derby.client.am.Decimal;
 import org.apache.derby.impl.sql.execute.CurrentDatetime;
+//import org.apache.derby.client.am.Decimal;
 
 import java.math.BigDecimal;
 import java.sql.*;

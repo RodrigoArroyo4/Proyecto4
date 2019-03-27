@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.apache.derby.client.am.Decimal;
+//import org.apache.derby.client.am.Decimal;
 
 import javax.swing.text.TabableView;
 import java.io.DataInputStream;

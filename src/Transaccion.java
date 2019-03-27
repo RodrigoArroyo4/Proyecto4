@@ -1,4 +1,5 @@
-import org.apache.derby.client.am.Decimal;
+//import org.apache.derby.client.am.Decimal;
+
 
 import java.io.Serializable;
 import java.math.BigDecimal;

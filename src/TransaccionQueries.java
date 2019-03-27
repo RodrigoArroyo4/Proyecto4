@@ -1,6 +1,7 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.apache.derby.client.am.Decimal;
+//import org.apache.derby.client.am.Decimal;
+//import org.apache.derby.client.am.Decimal;
 
 import java.sql.*;
 import java.util.ArrayList;
