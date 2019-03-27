@@ -19,7 +19,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="738.0" prefWidth="764.0" GridPane.columnIndex="1">
+      <AnchorPane prefHeight="728.0" prefWidth="764.0" GridPane.columnIndex="1">
          <children>
             <Label layoutX="345.0" layoutY="14.0" text="Server">
                <font>

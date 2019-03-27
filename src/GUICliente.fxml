@@ -13,7 +13,7 @@
       <AnchorPane prefHeight="482.0" prefWidth="600.0">
          <children>
             <Button fx:id="ConnectButton" layoutX="505.0" layoutY="30.0" mnemonicParsing="false" onAction="#connectToServer" text="Connect" />
-            <Button fx:id="TransactionButton" layoutX="482.0" layoutY="419.0" mnemonicParsing="false" onAction="#withdrawFunds" text="Transaccion" />
+            <Button fx:id="TransactionButton" layoutX="346.0" layoutY="429.0" mnemonicParsing="false" onAction="#withdrawFunds" text="Withdraw" />
             <Label layoutX="27.0" layoutY="35.0" prefHeight="17.0" prefWidth="70.0" text="ID Cliente" />
             <TableView fx:id="transaccionTableView" layoutX="97.0" layoutY="141.0" prefHeight="200.0" prefWidth="423.0">
               <columns>
@@ -28,6 +28,9 @@
             <Button layoutX="497.0" layoutY="72.0" mnemonicParsing="false" text="Disconnect" />
             <Label layoutX="45.0" layoutY="77.0" text="Saldo" />
             <TextField fx:id="SaldoText" editable="false" layoutX="97.0" layoutY="72.0" />
+            <Label layoutX="293.0" layoutY="366.0" text="Valor" />
+            <TextField layoutX="225.0" layoutY="383.0" />
+            <Button layoutX="205.0" layoutY="429.0" mnemonicParsing="false" text="Deposit" />
          </children>
       </AnchorPane>
    </children>

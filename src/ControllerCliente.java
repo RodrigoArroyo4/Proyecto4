@@ -3,6 +3,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.derby.client.am.Decimal;
 
 import javax.swing.text.TabableView;
 import java.io.DataInputStream;
@@ -22,6 +23,8 @@ public class ControllerCliente {
     private TextField Cedula;
     @FXML
     private TextField SaldoText;
+    @FXML
+    private TextField valorAction;
 
     //Table
     @FXML
@@ -43,6 +46,7 @@ public class ControllerCliente {
     private DataOutputStream toServer;
     private ObjectInputStream fromServerObject;
     private Boolean isConnected = false;
+    private Integer thisCliente = 0;
 
 
 
@@ -55,6 +59,7 @@ public class ControllerCliente {
         ConnectButton.setDisable(true);
         Cedula.setDisable(true);
         String clienteID = Cedula.getText();
+        thisCliente = Integer.parseInt(clienteID);
 
 
         try
@@ -101,7 +106,12 @@ public class ControllerCliente {
 
     @FXML
     public void withdrawFunds () throws Exception{
-        toServer.writeInt(200);
+
+        Double valortoAction = new Double(valorAction.getText());
+
+        toServer.write(thisCliente);
+        toServer.writeDouble(valortoAction);
+        
 
     }
 
