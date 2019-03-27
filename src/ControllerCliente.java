@@ -1,2 +1,8 @@
-public class ControllerCliente {
+public class ControllerCliente
+{
+
+    public ControllerCliente()
+    {
+
+    }
 }
