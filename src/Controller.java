@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
+import java.sql.*;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -64,10 +65,14 @@ public class Controller implements Initializable
     private TableColumn<Transaccion,String> transaccion_fecha_column;
 
 
+    private static final String URL = "jdbc:derby:Banco";
+    private static final String USERNAME = "rodrigo";
+    private static final String PASSWORD = "root";
+
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
-
+    public void initialize(URL url, ResourceBundle rb)
+    {
         //socket Initializer
         new Thread( ()-> {
             try {
@@ -146,7 +151,8 @@ public class Controller implements Initializable
         }
 
         //thread to be run
-        public void run(){
+        public void run()
+        {
             try {
                 //input/output handler might have to change to objectInput...
                 DataInputStream inputFromClient = new DataInputStream(
@@ -157,19 +163,58 @@ public class Controller implements Initializable
                         socket.getOutputStream());
 
                 //servicing the client
+                //Connection Init
+                String clientID = inputFromClient.readUTF();
+                conexiones.appendText("Cliente: " + clients + " with ID: " + clientID + "\n");
+                //Send saldo in saldo textArea when client connects to client
+                List<Double> saldoInicial = cq.getSaldoOfCuenta(Integer.parseInt(clientID));
+                outputToClient.writeDouble(saldoInicial.get(0));
+
+                //Transacciones
+                List<Transaccion> currTransaciones = tq.getTransaccionesfromCuenta(Integer.parseInt(clientID));
+                objectOutputToClient.writeObject(currTransaciones);
+
                 while(true)
                 {
-                    //Connection Init
-                    String clientID = inputFromClient.readUTF();
-                    conexiones.appendText("Cliente: " + clients + " with ID: " + clientID + "\n");
-                    //Send saldo in saldo textArea when client connects to client
-                    List<Double> saldoInicial = cq.getSaldoOfCuenta(Integer.parseInt(clientID));
-                    outputToClient.writeDouble(saldoInicial.get(0));
+                    String type = inputFromClient.readUTF();
 
-                    //Transacciones
-                    List<Transaccion> currTransaciones = tq.getTransaccionesfromCuenta(Integer.parseInt(clientID));
-                    objectOutputToClient.writeObject(currTransaciones);
+                    //Withdraw funds
+                    if (type.equals("W"))
+                    {
+                        int idCliente = inputFromClient.readInt();
+                        Double value = inputFromClient.readDouble();
+                        cq.withdraFunds(idCliente, value);
+                        cuentasTable.setItems(cq.getAllCuentas());
+                        List<Double> saldoInicialtemp = cq.getSaldoOfCuenta(Integer.parseInt(clientID));
+                        outputToClient.writeDouble(saldoInicialtemp.get(0));
+                        List<Transaccion> currTransacionesTemp = tq.getTransaccionesfromCuenta(Integer.parseInt(clientID));
+                        objectOutputToClient.writeObject(currTransacionesTemp);
+                        transaccionTableView.setItems(tq.getAllTransacciones());
+                        conexiones.appendText("Client with ID: " + idCliente + " has withdrawn funds" + "\n");
+                    }
+                    //Deposit Funds
+                    else if (type.equals("D"))
+                    {
+                        int idCliente = inputFromClient.readInt();
+                        Double value = inputFromClient.readDouble();
+                        cq.depositFunds(idCliente, value);
+                        cuentasTable.setItems(cq.getAllCuentas());
+                        List<Double> saldoInicialtemp = cq.getSaldoOfCuenta(Integer.parseInt(clientID));
+                        outputToClient.writeDouble(saldoInicialtemp.get(0));
+                        List<Transaccion> currTransacionesTemp = tq.getTransaccionesfromCuenta(Integer.parseInt(clientID));
+                        objectOutputToClient.writeObject(currTransacionesTemp);
+                        transaccionTableView.setItems(tq.getAllTransacciones());
+                        conexiones.appendText("Client with ID: " + idCliente + " has deposited funds" + "\n");
+                    }
 
+
+                    else if (type.equals("Disconnect"))
+                    {
+                        int clientID2 = inputFromClient.readInt();
+                        socket.close();
+                        conexiones.appendText("Cliennt with ID: " + clientID2 + " has disconnected " + "\n");
+                        clients--;
+                    }
 
                     //run the query that is desired here weather its Withdraw... etc. with inputFromClient
 
@@ -181,7 +226,7 @@ public class Controller implements Initializable
 
                 }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 

@@ -1,6 +1,7 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.apache.derby.client.am.Decimal;
@@ -11,20 +12,30 @@ import java.io.DataOutputStream;
 import java.io.ObjectInputStream;
 import java.math.BigDecimal;
 import java.net.Socket;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ControllerCliente {
+public class ControllerCliente implements Initializable
+{
 
     @FXML
     private Button ConnectButton;
     @FXML
+    private Button Disconnect;
+    @FXML
     private Button TransactionButton;
+    @FXML
+    private Button WithdrawButton;
+    @FXML
+    private Button DepositButton;
     @FXML
     private TextField Cedula;
     @FXML
     private TextField SaldoText;
     @FXML
     private TextField valorAction;
+
 
     //Table
     @FXML
@@ -50,7 +61,9 @@ public class ControllerCliente {
 
 
 
-    public ControllerCliente(){
+    public ControllerCliente()
+    {
+
     }
 
     @FXML
@@ -60,6 +73,11 @@ public class ControllerCliente {
         Cedula.setDisable(true);
         String clienteID = Cedula.getText();
         thisCliente = Integer.parseInt(clienteID);
+        valorAction.setDisable(false);
+        DepositButton.setDisable(false);
+        WithdrawButton.setDisable(false);
+        Disconnect.setDisable(false);
+
 
 
         try
@@ -109,10 +127,28 @@ public class ControllerCliente {
 
         Double valortoAction = new Double(valorAction.getText());
 
-        toServer.write(thisCliente);
+        toServer.writeUTF("W");
+        toServer.writeInt(thisCliente);
         toServer.writeDouble(valortoAction);
-        
+        Double saldoTemp = fromServer.readDouble();
+        SaldoText.setText(String.valueOf(saldoTemp));
+        List<Transaccion> currTransacciones = (List<Transaccion>) fromServerObject.readObject();
+        populateTransaccionTable(currTransacciones);
 
+    }
+
+    @FXML
+    public void depositFunds() throws Exception
+    {
+        Double valortoAction = new Double(valorAction.getText());
+
+        toServer.writeUTF("D");
+        toServer.writeInt(thisCliente);
+        toServer.writeDouble(valortoAction);
+        Double saldoTemp = fromServer.readDouble();
+        SaldoText.setText(String.valueOf(saldoTemp));
+        List<Transaccion> currTransacciones = (List<Transaccion>) fromServerObject.readObject();
+        populateTransaccionTable(currTransacciones);
     }
 
     public void populateTransaccionTable(List<Transaccion> currTransacciones){
@@ -126,4 +162,30 @@ public class ControllerCliente {
         transaccionTableView.setItems(cTransaccion);
     }
 
+    //Disconnect client
+    @FXML
+    public void disconnect() throws Exception
+    {
+        toServer.writeUTF("Disconnect");
+        toServer.writeInt(thisCliente);
+        ConnectButton.setDisable(false);
+        Cedula.setDisable(false);
+        transaccionTableView.setItems(null);
+        SaldoText.setText("");
+        valorAction.setDisable(true);
+        Cedula.setText("");
+        DepositButton.setDisable(true);
+        WithdrawButton.setDisable(true);
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        DepositButton.setDisable(true);
+        WithdrawButton.setDisable(true);
+        SaldoText.setDisable(true);
+        valorAction.setDisable(true);
+        Disconnect.setDisable(true);
+    }
 }
