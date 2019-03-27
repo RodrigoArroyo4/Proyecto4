@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -18,10 +19,49 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+      <AnchorPane prefHeight="728.0" prefWidth="764.0" GridPane.columnIndex="1">
          <children>
-            <Text layoutX="86.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-            <Text layoutX="86.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FAusto Alcalde" />
+            <Label layoutX="345.0" layoutY="14.0" text="Server">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="conexiones" editable="false" layoutX="74.0" layoutY="91.0" prefHeight="100.0" prefWidth="615.0" />
+            <Label layoutX="344.0" layoutY="61.0" text="Actividad">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="357.0" layoutY="202.0" text="Datos">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TableView fx:id="clienteTable" layoutX="73.0" layoutY="271.0" prefHeight="102.0" prefWidth="615.0">
+              <columns>
+                <TableColumn fx:id="cliente_id_column" prefWidth="309.0" text="cliente_id" />
+                <TableColumn fx:id="nombre_cliente_column" minWidth="0.0" prefWidth="305.0" text="nombre_cliente" />
+              </columns>
+            </TableView>
+            <Label layoutX="357.0" layoutY="237.0" text="Clientes" />
+            <TableView fx:id="cuentasTable" layoutX="74.0" layoutY="420.0" prefHeight="124.0" prefWidth="615.0">
+               <columns>
+                  <TableColumn fx:id="cuenta_id_column" prefWidth="196.0" text="cuenta_id" />
+                  <TableColumn fx:id="cliente_id_cuenta_column" prefWidth="211.0" text="cliente_id" />
+                  <TableColumn fx:id="saldo_column" prefWidth="207.0" text="saldo" />
+               </columns>
+            </TableView>
+            <Label layoutX="357.0" layoutY="390.0" text="Cuentas" />
+            <TableView fx:id="transaccionTableView" layoutX="76.0" layoutY="574.0" prefHeight="124.0" prefWidth="615.0">
+               <columns>
+                  <TableColumn fx:id="transaccion_id_column" prefWidth="119.0" text="transaccion_id" />
+                  <TableColumn fx:id="transaccion_cuenta_id_column" prefWidth="103.0" text="cuenta_id" />
+                  <TableColumn fx:id="transaccion_tipo_column" prefWidth="161.0" text="tipo" />
+                  <TableColumn fx:id="transaccion_valor_column" prefWidth="110.0" text="valor" />
+                  <TableColumn fx:id="transaccion_fecha_column" prefWidth="121.0" text="fecha" />
+               </columns>
+            </TableView>
+            <Label layoutX="337.0" layoutY="551.0" text="Transacciones" />
          </children>
       </AnchorPane>
    </children>

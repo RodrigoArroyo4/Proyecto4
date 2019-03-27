@@ -24,10 +24,10 @@ public class MainCliente extends Application {
     {
         Parent root = FXMLLoader.load(getClass().getResource("GUICliente.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 600, 482));
         primaryStage.show();
 
-        connectToServer();
+        //connectToServer();
     }
 
     private void connectToServer() {

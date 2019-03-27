@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ControllerCliente"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="482.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerCliente">
+   <children>
+      <AnchorPane prefHeight="482.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="ConnectButton" layoutX="505.0" layoutY="30.0" mnemonicParsing="false" onAction="#connectToServer" text="Connect" />
+            <Button fx:id="TransactionButton" layoutX="346.0" layoutY="429.0" mnemonicParsing="false" onAction="#withdrawFunds" text="Withdraw" />
+            <Label layoutX="27.0" layoutY="35.0" prefHeight="17.0" prefWidth="70.0" text="ID Cliente" />
+            <TableView fx:id="transaccionTableView" layoutX="97.0" layoutY="141.0" prefHeight="200.0" prefWidth="423.0">
+              <columns>
+                <TableColumn fx:id="transaccion_id_column" prefWidth="110.0" text="ID Transaccion" />
+                <TableColumn fx:id="transaccion_cuenta_id_column" prefWidth="75.0" text="ID Cuenta" />
+                  <TableColumn fx:id="transaccion_tipo_column" prefWidth="74.0" text="Tipo" />
+                  <TableColumn fx:id="transaccion_valor_column" prefWidth="72.0" text="Valor" />
+                  <TableColumn fx:id="transaccion_fecha_column" prefWidth="91.0" text="Fecha" />
+              </columns>
+            </TableView>
+            <TextField fx:id="Cedula" layoutX="97.0" layoutY="30.0" />
+            <Button layoutX="497.0" layoutY="72.0" mnemonicParsing="false" text="Disconnect" />
+            <Label layoutX="45.0" layoutY="77.0" text="Saldo" />
+            <TextField fx:id="SaldoText" editable="false" layoutX="97.0" layoutY="72.0" />
+            <Label layoutX="293.0" layoutY="366.0" text="Valor" />
+            <TextField layoutX="225.0" layoutY="383.0" />
+            <Button layoutX="205.0" layoutY="429.0" mnemonicParsing="false" text="Deposit" />
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

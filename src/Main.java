@@ -21,107 +21,17 @@ public class Main extends Application
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("GUIServidor.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 764, 730));
         primaryStage.show();
 
-        /*
-        Maybe rename this class? to MultiThreadServer As it will be handling server threads.
-
-        This class will create the server socket,
-        handle clients (one thread per client).
-
-        Extra class must be defined that will "handleAclient", meaning it will do what the client asks to do
-        transaction wise probably
-
-        */
-
-        //Main thread that will handle the opening and listening of new sockets
-        new Thread( ()-> {
-            try {
-                //Start Server with desired port on the socket
-                ServerSocket serverSocket = new ServerSocket(8080);
-
-                //Maybe add info to pop up in terminal that server has been created
-                System.out.println("Server Started: at " + new Date() + "\n");
-
-                //runLater commands can be avoided unless required for th GUI
-
-                //loop to maintain server up and running
-
-                while (true) {
-                    //accept a new socket connection
-                    Socket socket = serverSocket.accept();
-
-                    //count Clients
-                    clients++;
-
-                    //maybe terminal command to show a new connection was made
-
-                    System.out.println("Starting thread for client " + clients +
-                            " at " + new Date() + '\n');
-
-
-                    //main thread handler
-                    new Thread(new HandleAclient(socket)).start();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
     }
-
-
-    //Class to handle everything done by server when it gets a client
-    class HandleAclient implements Runnable{
-        private Socket socket;
-
-        public HandleAclient(Socket socket){
-            this.socket = socket;
-        }
-
-        //thread to be run
-        public void run(){
-            try {
-                //input/output handler might have to change to objectInput...
-                DataInputStream inputFromClient = new DataInputStream(
-                        socket.getInputStream());
-                DataOutputStream outputToClient = new DataOutputStream(
-                        socket.getOutputStream());
-
-                //servicing the client
-                while(true)
-                {
-                    //run the query that is desired here weather its Withdraw... etc. with inputFromClient
-
-
-                    //send confirmation of succesful/unsuccesful transaction, using outputToClient
-
-                    int mensaje = inputFromClient.readInt();
-                    System.out.println(mensaje);
-
-                    //show results in GUI with Platform.runLater()...
-
-
-                }
-
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-        }
-
-    }
-
 
     public static void main(String[] args)
     {
 
         final String DATABASE_URL = "jdbc:derby:Banco";
         final String SELECT_QUERY =
-                "SELECT * from cliente";
+                "SELECT * from Transacciones";
 
         try(
                 Connection connection = DriverManager.getConnection(
