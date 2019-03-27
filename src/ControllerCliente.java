@@ -1,9 +1,13 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import javax.swing.text.TabableView;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.ObjectInputStream;
+import java.math.BigDecimal;
 import java.net.Socket;
+import java.util.List;
 
 public class ControllerCliente {
 
@@ -16,10 +20,25 @@ public class ControllerCliente {
     @FXML
     private TextField SaldoText;
 
+    //Table
+    @FXML
+    private TableView<Transaccion> transaccionTableView;
+    @FXML
+    private TableColumn<Transaccion,Integer> transaccion_id_column;
+    @FXML
+    private TableColumn<Transaccion,Integer> transaccion_cuenta_id_column;
+    @FXML
+    private TableColumn<Transaccion,String> transaccion_tipo_column;
+    @FXML
+    private TableColumn<Transaccion,BigDecimal> transaccion_valor_column;
+    @FXML
+    private TableColumn<Transaccion,String> transaccion_fecha_column;
+
 
     private String host = "localhost";
     private DataInputStream fromServer;
     private DataOutputStream toServer;
+    private ObjectInputStream fromServerObject;
     private Boolean isConnected = false;
 
 
@@ -38,13 +57,15 @@ public class ControllerCliente {
         try
         {
             // Create a socket to connect to the server
-             Socket socket = new Socket(host, 8080);
+            Socket socket = new Socket(host, 8080);
 
             // Create an input stream to receive data from the server
             fromServer = new DataInputStream(socket.getInputStream());
 
             // Create an output stream to send data to the server
             toServer = new DataOutputStream(socket.getOutputStream());
+
+            fromServerObject = new ObjectInputStream(socket.getInputStream());
         }
         catch (Exception ex) {
             ex.printStackTrace();
@@ -58,6 +79,11 @@ public class ControllerCliente {
                 toServer.writeUTF(clienteID);
                 double saldoInicial = fromServer.readDouble();
                 SaldoText.setText(Double.toString(saldoInicial));
+                List<Transaccion> currTransacciones = (List<Transaccion>) fromServerObject.readObject();
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -68,9 +94,14 @@ public class ControllerCliente {
     }
 
 
+
     @FXML
     public void withdrawFunds () throws Exception{
         toServer.writeInt(200);
+
+    }
+
+    public void populateTransaccionTable(List<Transaccion> currTransacciones){
 
     }
 

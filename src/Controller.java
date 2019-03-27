@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.math.BigDecimal;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -152,6 +153,8 @@ public class Controller implements Initializable
                         socket.getInputStream());
                 DataOutputStream outputToClient = new DataOutputStream(
                         socket.getOutputStream());
+                ObjectOutputStream objectOutputToClient = new ObjectOutputStream(
+                        socket.getOutputStream());
 
                 //servicing the client
                 while(true)
@@ -162,6 +165,8 @@ public class Controller implements Initializable
                     //Send saldo in saldo textArea when client connects to client
                     List<Double> saldoInicial = cq.getSaldoOfCuenta(Integer.parseInt(clientID));
                     outputToClient.writeDouble(saldoInicial.get(0));
+                    List<Transaccion> currTransaciones = tq.getTransaccionesfromCuenta(Integer.parseInt(clientID));
+                    objectOutputToClient.writeObject(currTransaciones);
 
 
                     //run the query that is desired here weather its Withdraw... etc. with inputFromClient
